@@ -1,0 +1,9 @@
+{
+	"devDependencies": {
+		"tsx": "3.12.5",
+		"typescript": "5.0.2"
+	},
+	"dependencies": {
+		"pnpm": "^7.30.0"
+	}
+}
