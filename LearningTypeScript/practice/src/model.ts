@@ -6,7 +6,6 @@ let createDate = new Date()
 type Cost = number | string
 
 let originalCost: Cost
-originalCost = 425
 
 if (typeof originalCost === 'number') {
 	let cost = originalCost
@@ -39,9 +38,11 @@ function getInventoryItem(trackingNumber: string): InventoryItem {
 	}
 }
 
-function saveInventoryItem(item: InventoryItem): void {}
+function saveInventoryItem(item: InventoryItem) {}
 
 let inventoryItem = getInventoryItem(trackingNumber)
+
+let updatedInventoryItem = inventoryItem
 
 inventoryItem.createDate = new Date()
 
@@ -51,3 +52,20 @@ saveInventoryItem({
 	trackingNumber: 'MBP123456',
 	createDate: new Date(),
 })
+
+function clone<T, U>(source: T, options: U): T {
+	const serialized = JSON.stringify(source)
+	return JSON.parse(serialized)
+}
+
+const cloned = clone(inventoryItem, { deep: true })
+
+interface KeyValuePair<TKey, TValue> {
+	Key: TKey
+	Value: TValue
+}
+
+const keyValue1: KeyValuePair<number, number> = { Key: 123, Value: 123 }
+const keyValue2: KeyValuePair<string, boolean> = { Key: 'test', Value: true }
+
+declare var Vue: any
